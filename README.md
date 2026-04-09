@@ -14,3 +14,22 @@ Venda 1 ─── N VendaProduto
 Usuário 1 ─── N Venda
 Usuário 1 ─── N Entrada
 Usuário 1 ─── N Movimentação
+
+---------------------------------------SERVICE-------------------
+No service, onde entra a lógica de serviço tentei fazer
+
+VendaService
+
+vendarepository---- venda
+
+vendaprodutorepository---- vendaproduto
+
+perfilrepository---------- perfil
+
+produtorepository--------- produto
+
+usuariorepository---------usuario
+
+categoriarepository------ categoria
+
+movimentacaoestoquerepository ------ movimentacaoestoque
