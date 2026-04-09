@@ -14,11 +14,7 @@ Venda 1 ─── N VendaProduto
 Usuário 1 ─── N Venda
 Usuário 1 ─── N Entrada
 Usuário 1 ─── N Movimentação
-
----------------------------------------SERVICE-------------------
-No service, onde entra a lógica de serviço tentei fazer
-
-VendaService
+---------------------------REPOSITORY---------------------------
 
 vendarepository---- venda
 
@@ -33,3 +29,13 @@ usuariorepository---------usuario
 categoriarepository------ categoria
 
 movimentacaoestoquerepository ------ movimentacaoestoque
+
+---------------------------------------SERVICE-------------------
+No service, onde entra a lógica de serviço tentei fazer
+
+VendaService -------->  Receber uma venda com itens
+                        Validar dados
+                        Calcular valores
+                        Associar corretamente os itens 
+                        Dar baixa no estoque
+                        Salvar tudo no banco
