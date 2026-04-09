@@ -11,9 +11,10 @@ create table usuario (
 );
 
 create table fornecedor (
- id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    cnpj VARCHAR(20),
     nome VARCHAR(100) NOT NULL,
-    telefone VARCHAR(20)
+    telefone VARCHAR(11)
 );
 
 create table categoria (
@@ -27,7 +28,7 @@ create table produto (
     valor_custo DECIMAL(10,2),
     valor_venda DECIMAL(10,2) NOT NULL,
     quantidade_estoque INT NOT NULL DEFAULT 0,
-
+    marcaProduto VARCHAR(50) UNIQUE,
     categoria_id INT,
     fornecedor_id INT,
 

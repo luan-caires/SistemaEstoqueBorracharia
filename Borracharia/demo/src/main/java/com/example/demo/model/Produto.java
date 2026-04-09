@@ -18,6 +18,8 @@ public class Produto {
 
     @Column(nullable= false, length = 100)
         private String nomeProduto;
+    @Column(nullable = true, length = 50, unique = true)
+        private String marcaProduto;
 
     @ManyToOne
     @JoinColumn(name = "id_categoria")
