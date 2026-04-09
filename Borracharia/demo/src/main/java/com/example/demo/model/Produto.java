@@ -1,0 +1,34 @@
+package com.example.demo.model;
+
+import java.math.BigDecimal;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Table(name = "Produto")
+public class Produto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long idProduto;
+
+    @Column(nullable= false, length = 100)
+        private String nomeProduto;
+
+    @ManyToOne
+    @JoinColumn(name = "id_categoria")
+        private Categoria categoria;
+
+    private BigDecimal valorCusto;
+    
+    private BigDecimal valorVenda;
+
+    private Integer quantidadeEstoque;
+
+    
+
+}
