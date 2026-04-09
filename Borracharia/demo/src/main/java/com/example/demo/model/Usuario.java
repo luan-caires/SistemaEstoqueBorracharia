@@ -26,7 +26,7 @@ public class Usuario {
     private String senha;
 
     @ManyToOne
-    @JoinColumn(name = "id_perfil")
+    @JoinColumn(name = "id_perfil", nullable = false)
     private Perfil perfil;
-    
+
 }
