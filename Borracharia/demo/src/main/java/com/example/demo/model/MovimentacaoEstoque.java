@@ -2,8 +2,10 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import lombok.Data;
 
 @Entity
+@Data
 @Table(name = "movimentacao_estoque")
 public class MovimentacaoEstoque {
     @Id

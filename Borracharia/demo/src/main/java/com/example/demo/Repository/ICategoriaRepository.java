@@ -8,4 +8,6 @@ import com.example.demo.model.Categoria;
 @Repository
 public interface ICategoriaRepository extends JpaRepository<Categoria, Long> {
 
+    boolean nomeCategoriaIgual(String nomeCategoria);
+
 }
