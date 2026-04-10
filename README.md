@@ -33,7 +33,7 @@ movimentacaoestoquerepository ------ movimentacaoestoque
 ---------------------------------------SERVICE-------------------
 No service, onde entra a lógica de serviço tentei fazer
 
-VendaService -------->  Receber uma venda com itens
+VendaService -------->  Receber uma venda com itens 
                         Validar dados
                         Calcular valores
                         Associar corretamente os itens 

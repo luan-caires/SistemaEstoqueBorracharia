@@ -28,7 +28,6 @@ create table produto (
     valor_custo DECIMAL(10,2),
     valor_venda DECIMAL(10,2) NOT NULL,
     quantidade_estoque INT NOT NULL DEFAULT 0,
-    marcaProduto VARCHAR(50) UNIQUE,
     categoria_id INT,
     fornecedor_id INT,
 
