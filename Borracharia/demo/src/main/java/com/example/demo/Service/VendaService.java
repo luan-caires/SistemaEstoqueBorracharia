@@ -1,4 +1,4 @@
-package com.example.demo.Service;
+package com.example.demo.service;
 
 import java.time.LocalDate;
 
@@ -56,6 +56,7 @@ public class VendaService {
     public Double valorTotalVenda(Venda venda, List<VendaProduto> itensVenda) {
         Double valorTotal = 0.0;
         for(int i = 0; i < itensVenda.size(); i++){
+            VendaProduto item = itensVenda.get(i);
             valorTotal += item.getQuantidade() * item.getProduto().getValorVenda();
             
         }

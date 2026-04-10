@@ -9,6 +9,7 @@ import com.example.demo.model.Venda;
 
 @Repository
 public interface IVendaRepository extends JpaRepository<Venda, Long>{
-
+    
+    Venda findByData(LocalDate data);
 
 }
