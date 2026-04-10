@@ -23,6 +23,17 @@ public class Venda {
 
     private LocalDateTime dataVenda;
 
+    private Double valorTotal;
+    
+    private Double valorPago;
+    
+    private Double valorTroco;
+    
+    private Double desconto;
+    
+    private Integer quantidadeVendida;
+    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "forma_pagamento")
         private FormaPagamento formaPagamento;

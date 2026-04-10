@@ -31,6 +31,7 @@ public class Produto {
 
     private Integer quantidadeEstoque;
 
+
     
 
 }

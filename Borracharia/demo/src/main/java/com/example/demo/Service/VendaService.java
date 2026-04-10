@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
 import com.example.demo.Repository.IVendaRepository;
 import com.example.demo.Repository.IProdutoRepository;
@@ -12,6 +13,7 @@ import com.example.demo.Repository.IUsuarioRepository;
 import com.example.demo.model.Produto;
 
 import com.example.demo.model.Venda;
+import com.example.demo.model.VendaProduto;
 
 @Service
 
@@ -26,7 +28,7 @@ public class VendaService {
     
     @Autowired
     private IUsuarioRepository usuarioRepository;
-  
+
     //salva uma venda por odem de venda 
     public void salvarVenda(Venda venda) {
         vendaRepository.save(venda);
@@ -51,12 +53,12 @@ public class VendaService {
         return vendaRepository.findByData(data);
     }
     //Calcula o valor total da venda
-    public Double calcularValorTotalVenda(Venda venda) {
+    public Double valorTotalVenda(Venda venda, List<VendaProduto> itensVenda) {
         Double valorTotal = 0.0;
-        for (Produto produto : venda.getProdutos()) {
-            valorTotal += (produto.getValorVenda() * produto.getQuantidadeVendida());
-
+        for(int i = 0; i < itensVenda.size(); i++){
+            valorTotal += item.getQuantidade() * item.getProduto().getValorVenda();
+            
         }
-        return valorTotal;
+    return valorTotal;
     }
 }
