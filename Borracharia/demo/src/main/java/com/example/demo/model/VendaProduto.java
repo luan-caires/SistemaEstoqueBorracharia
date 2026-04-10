@@ -26,4 +26,9 @@ public class VendaProduto {
 
     private Integer quantidade;
 
+    private Double valorUnitario;
+    private Double valorTotal;
+    private Double subTotal;
+    
+
 }

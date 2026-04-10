@@ -56,6 +56,7 @@ create table venda (
     usuario_id INT NOT NULL,
     data DATETIME DEFAULT CURRENT_TIMESTAMP,
     forma_pagamento VARCHAR(50),
+    status_venda VARCHAR(20) NOT NULL UNIQUE,
 
     FOREIGN KEY (usuario_id) REFERENCES usuario(id)
 );

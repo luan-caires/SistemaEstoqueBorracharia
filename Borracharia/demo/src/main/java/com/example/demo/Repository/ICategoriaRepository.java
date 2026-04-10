@@ -9,5 +9,6 @@ import com.example.demo.model.Categoria;
 public interface ICategoriaRepository extends JpaRepository<Categoria, Long> {
 
     boolean nomeCategoriaIgual(String nomeCategoria);
+    Categoria buscarProdutosVinculados(Long idCategoria);
 
 }

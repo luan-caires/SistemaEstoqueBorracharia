@@ -1,11 +1,13 @@
 package com.example.demo.service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
 import com.example.demo.model.Categoria;
 import com.example.demo.repository.ICategoriaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
-import java.util.List;
 
 @Service
 public class  CategoriaService extends EntidadeAbstrata<Categoria, Long>{
@@ -29,7 +31,12 @@ public class  CategoriaService extends EntidadeAbstrata<Categoria, Long>{
 
     @Override
     public void excluir(Long id) {
-        // TODO Auto-generated method stub
+        // não pode deixar excluir se caso tiver produtos vinculados
+        Categoria categoria = categoriaRepository.buscarProdutosVinculados(id);
+        if(categoria != null) {
+            throw new IllegalArgumentException("Não é possível excluir a categoria, existem produtos vinculados a ela");
+        }
+        categoriaRepository.deleteById(id);
         throw new UnsupportedOperationException("Não foi possívelimplementar o metodo 'excluir'");
     }
 

@@ -36,6 +36,7 @@ public class Venda {
     
     private Integer quantidadeVendida;
     
+    private String statusVenda;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "forma_pagamento")
