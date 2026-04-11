@@ -107,12 +107,14 @@ public class VendaService extends EntidadeAbstrata<Venda, Long> {
 
             Produto produto = item.getProduto();
 
-            if (produto.getQuantidadeEstoque() < produto.getQuantidade()) {
+            if (produto.getQuantidadeEstoque() < item.getQuantidade()) {
                 throw new IllegalArgumentException("Estoque insuficiente para o produto: " + produto.getNome());
             }
-        }
+        
         produto.setQuantidadeEstoque(produto.getQuantidadeEstoque() - item.getQuantidade());
         produtoRepository.save(produto);
+    }
+
 
         venda.setValorTroco(venda.getValorPago() - venda.getValorTotal());
         vendaRepository.save(venda);
