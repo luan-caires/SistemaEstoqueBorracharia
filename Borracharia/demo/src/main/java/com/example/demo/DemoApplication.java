@@ -39,7 +39,7 @@ public class DemoApplication {
 		return args -> {
 
 			// ===============================
-			// 1. CRIAR USUÁRIO
+			// 1. CRIAR USUARIO
 			// ===============================
 			Usuario usuario = new Usuario();
 			usuario.setNomeUsuario("Luan");
