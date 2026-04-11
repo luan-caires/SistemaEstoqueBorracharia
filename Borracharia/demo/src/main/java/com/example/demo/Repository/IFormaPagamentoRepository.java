@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.FormaPagamento;
 
-public interface IFormaPagamentoRepository {
+@Repository
+public interface IFormaPagamentoRepository extends JpaRepository<FormaPagamento, Long> {
 
 }

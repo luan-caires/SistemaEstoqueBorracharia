@@ -12,13 +12,30 @@ public class FormaPagamentoService extends EntidadeAbstrata<FormaPagamento, Long
     private IFormaPagamentoRepository formaPagamentoRepository;
 
     @Override
-    public void salvar(FormaPagamento formaPagamento) {
-        formaPagamentoRepository.save(formaPagamento);
+    public List<FormaPagamento> buscarTodos() {
+        return formaPagamentoRepository.findAll();
     }
 
-    public void excluir(Long id) {
+    @Override
+    public void salvar(FormaPagamento formaPagamento) {
+         if(formaPagamento.getDescricao() == null || formaPagamento.getDescricao().isEmpty()) {
+             throw new IllegalArgumentException("A descrição da forma de pagamento é obrigatória");
+         }
+         formaPagamentoRepository.save(formaPagamento);
+    }
+
+    @Override
+    public void deletar(Long id) {
+        if(!formaPagamentoRepository.existsById(id)) {
+            throw new IllegalArgumentException("A forma de pagamento com o id " + id + " não existe");
+        }
         formaPagamentoRepository.deleteById(id);
     }
 
-    
+    @Override
+    public FormaPagamento buscarPorId(Long id) {
+         if(!formaPagamentoRepository.existsById(id)) {
+             throw new IllegalArgumentException("A forma de pagamento com o id " + id + " não existe");
+         }
+         return formaPagamentoRepository.findById(id).orElse(null);
 }

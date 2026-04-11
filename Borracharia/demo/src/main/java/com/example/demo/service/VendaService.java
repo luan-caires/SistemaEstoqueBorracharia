@@ -84,7 +84,8 @@ public class VendaService extends EntidadeAbstrata<Venda, Long> {
         throw new UnsupportedOperationException("Não foi possívelimplementar o metodo 'editar'");
     }
     
-    public void finalizarVenda(Venda venda) {
+    public void finalizarVenda(Venda venda, Usuario usuario, Perfil perfil) {
+         validarPermissaoVenda(usuario, perfil);
         if(venda.getStatusVenda() == null || venda.getStatusVenda().isEmpty()) {
             throw new IllegalArgumentException("O status da venda é obrigatório e deve ser uma string não vazia");
 
@@ -145,10 +146,13 @@ public class VendaService extends EntidadeAbstrata<Venda, Long> {
         throw new UnsupportedOperationException("Não foi possívelimplementar o metodo 'buscarPorId'");
     }
 
-    public void validarPermissaoVenda(Usuario usuario) {
-        if(usuario.getPerfil() != Perfil.ADMINISTRADOR && usuario.getPerfil() != Perfil.GERENTE && usuario.getPerfil() != Perfil.VENDEDOR) {
-            throw new IllegalArgumentException("O usuário deve ter perfil de ADMINISTRADOR ou GERENTE para realizar vendas");
-        }
+    public void validarPermissaoVenda(Usuario usuario, Perfil perfil) {
+       for(Perfil p : perfil.VENDEDOR()) {
+           if(p == perfil) {
+               return;
+           }
+       }
+       throw new IllegalArgumentException("O usuário não tem permissão para realizar vendas");
     }
 
 
