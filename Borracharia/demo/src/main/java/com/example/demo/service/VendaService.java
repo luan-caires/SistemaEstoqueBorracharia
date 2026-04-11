@@ -13,14 +13,17 @@ import com.example.demo.repository.IProdutoRepository;
 import com.example.demo.model.FormaPagamento;
 import com.example.demo.model.VendaProduto;
 import com.example.demo.model.Usuario;
-
-
+import com.example.demo.repository.IUsuarioRepository;
+import com.example.demo.model.Perfil;
+import com.example.demo.repository.IPerfilRepository;
 @Service
 public class VendaService extends EntidadeAbstrata<Venda, Long> {
     @Autowired
     private IVendaRepository vendaRepository;
     @Autowired
     private IProdutoRepository produtoRepository;
+    @Autowired  
+    private IUsuarioRepository usuarioRepository;
     
 
     @Override
@@ -128,6 +131,7 @@ public class VendaService extends EntidadeAbstrata<Venda, Long> {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Não foi possívelimplementar o metodo 'listar'");
     }
+    
     public List<Venda> buscarPorData(String data) {
         if(data == null || data.isEmpty()) {
             throw new IllegalArgumentException("A data para busca é obrigatória e deve ser uma string não vazia");
@@ -141,6 +145,11 @@ public class VendaService extends EntidadeAbstrata<Venda, Long> {
         throw new UnsupportedOperationException("Não foi possívelimplementar o metodo 'buscarPorId'");
     }
 
+    public void validarPermissaoVenda(Usuario usuario) {
+        if(usuario.getPerfil() != Perfil.ADMINISTRADOR && usuario.getPerfil() != Perfil.GERENTE && usuario.getPerfil() != Perfil.VENDEDOR) {
+            throw new IllegalArgumentException("O usuário deve ter perfil de ADMINISTRADOR ou GERENTE para realizar vendas");
+        }
+    }
 
 
 }
