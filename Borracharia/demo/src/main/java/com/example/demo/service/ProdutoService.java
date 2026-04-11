@@ -3,8 +3,9 @@ package com.example.demo.service;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.example.demo.repository.IProdutoRepository;
 import com.example.demo.model.Produto;
 
 
@@ -12,8 +13,10 @@ import io.micrometer.common.util.StringUtils;
 @Service
 public class ProdutoService extends EntidadeAbstrata<Produto, Long>{
 
-    @Override
-    public void salvar(Produto produto) {
+    @Autowired
+    private IProdutoRepository produtoRepository;
+    
+    public Produto salvar(Produto produto) {
         //Preciso salvar o produto, com um nome, valor maior que 0, e quantidade em estoque maior ou igual a 0
         if(StringUtils.isEmpty(produto.getNomeProduto())) {
             throw new IllegalArgumentException("O nome do produto é obrigatório");
@@ -24,6 +27,7 @@ public class ProdutoService extends EntidadeAbstrata<Produto, Long>{
         if(produto.getQuantidadeEstoque() == null || produto.getQuantidadeEstoque() < 0) {
             throw new IllegalArgumentException("A quantidade em estoque do produto deve ser um valor não negativo");
         }
+        produtoRepository.save(produto);
     }
 
     @Override

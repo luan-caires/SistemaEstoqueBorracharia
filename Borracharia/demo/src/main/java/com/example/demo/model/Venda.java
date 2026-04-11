@@ -3,6 +3,7 @@ package com.example.demo.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import java.math.BigDecimal;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -26,17 +27,17 @@ public class Venda {
 
     private LocalDateTime dataVenda;
 
-    private Double valorTotal;
+    private BigDecimal valorTotal;
     
-    private Double valorPago;
+    private BigDecimal valorPago;
     
-    private Double valorTroco;
+    private BigDecimal valorTroco;
     
-    private Double desconto;
+    private BigDecimal desconto;
     
     private Integer quantidadeVendida;
     
-    private String statusVenda;
+    private StatusVenda statusVenda;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "forma_pagamento")

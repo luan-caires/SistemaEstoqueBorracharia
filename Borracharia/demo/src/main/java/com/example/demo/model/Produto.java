@@ -32,7 +32,8 @@ public class Produto {
     private BigDecimal valorCusto;
     
     private BigDecimal valorVenda;
-
+    
+    private BigDecimal subTotal;
     private Integer quantidadeEstoque;
 
     

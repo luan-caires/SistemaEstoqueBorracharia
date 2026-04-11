@@ -8,24 +8,23 @@ import java.util.List;
 
 @Service
 public class FormaPagamentoService extends EntidadeAbstrata<FormaPagamento, Long>{
+    
     @Autowired
     private IFormaPagamentoRepository formaPagamentoRepository;
 
     @Override
-    public List<FormaPagamento> buscarTodos() {
+    public List<FormaPagamento> listar() {
         return formaPagamentoRepository.findAll();
     }
 
     @Override
     public void salvar(FormaPagamento formaPagamento) {
-         if(formaPagamento.getDescricao() == null || formaPagamento.getDescricao().isEmpty()) {
-             throw new IllegalArgumentException("A descrição da forma de pagamento é obrigatória");
-         }
+        
          formaPagamentoRepository.save(formaPagamento);
     }
 
     @Override
-    public void deletar(Long id) {
+    public void excluir(Long id) {
         if(!formaPagamentoRepository.existsById(id)) {
             throw new IllegalArgumentException("A forma de pagamento com o id " + id + " não existe");
         }
@@ -38,4 +37,5 @@ public class FormaPagamentoService extends EntidadeAbstrata<FormaPagamento, Long
              throw new IllegalArgumentException("A forma de pagamento com o id " + id + " não existe");
          }
          return formaPagamentoRepository.findById(id).orElse(null);
+    }
 }

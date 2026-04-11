@@ -1,4 +1,6 @@
 package com.example.demo.model;
+import java.math.BigDecimal;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,9 +28,9 @@ public class VendaProduto {
 
     private Integer quantidade;
 
-    private Double valorUnitario;
-    private Double valorTotal;
-    private Double subTotal;
+    private BigDecimal valorUnitario;
+    private BigDecimal valorTotal;
+    private BigDecimal subTotal;
     
 
 }
