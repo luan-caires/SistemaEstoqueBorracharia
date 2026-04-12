@@ -39,9 +39,10 @@ public class ProdutoService extends EntidadeAbstrata<Produto, Long>{
     }
 
     @Override
-    public void editar(Produto produto) {
+    public Produto editar(Produto produto) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Não foi possível implementar o método 'editar'");
+        return produtoRepository.save(produto);
     }
 
     @Override

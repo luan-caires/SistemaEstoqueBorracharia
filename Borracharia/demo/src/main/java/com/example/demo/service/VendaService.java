@@ -28,7 +28,13 @@ public class VendaService {
     // CRIAR VENDA
     // ===============================
     public Venda salvar(Venda venda) {
-        return vendaRepository.save(venda);
+        for(VendaProduto item : venda.getItens()) {
+            Produto produto = produtoRepository.findById(item.getProduto().getidProduto())
+                    .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+            if (produto.getQuantidadeEstoque() < item.getQuantidade()) {
+                throw new RuntimeException("Estoque insuficiente para o produto: " + produto.getNomeProduto());
+            }
+        }
     }
 
     // ===============================
@@ -70,7 +76,7 @@ public class VendaService {
 
         for (VendaProduto item : venda.getItens()) {
 
-            Produto produto = produtoRepository.findById(item.getProduto().getId())
+            Produto produto = produtoRepository.findById(item.getProduto().getidProduto())
                     .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
 
             if (produto.getQuantidadeEstoque() < item.getQuantidade()) {

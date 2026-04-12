@@ -16,9 +16,10 @@ public class UsuarioService extends EntidadeAbstrata<Usuario, Long>{
     private IUsuarioRepository usuarioRepository;
     
     @Override
-    public void salvar(Usuario usuario) {
+    public Usuario salvar(Usuario usuario) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Não foi possívelimplementar o metodo 'salvar'");
+        return usuarioRepository.save(usuario);
     }
 
     @Override
@@ -28,9 +29,10 @@ public class UsuarioService extends EntidadeAbstrata<Usuario, Long>{
     }
 
     @Override
-    public void editar(Usuario usuario) {
+    public Usuario editar(Usuario usuario) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Não foi possívelimplementar o metodo 'editar'");
+        return usuarioRepository.save(usuario);
     }
 
     @Override

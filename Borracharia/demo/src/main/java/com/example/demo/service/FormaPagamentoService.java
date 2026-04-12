@@ -18,9 +18,9 @@ public class FormaPagamentoService extends EntidadeAbstrata<FormaPagamento, Long
     }
 
     @Override
-    public void salvar(FormaPagamento formaPagamento) {
+    public FormaPagamento salvar(FormaPagamento formaPagamento){
         
-         formaPagamentoRepository.save(formaPagamento);
+    return formaPagamentoRepository.save(formaPagamento);
     }
 
     @Override
@@ -37,5 +37,9 @@ public class FormaPagamentoService extends EntidadeAbstrata<FormaPagamento, Long
              throw new IllegalArgumentException("A forma de pagamento com o id " + id + " não existe");
          }
          return formaPagamentoRepository.findById(id).orElse(null);
+    }
+    @Override
+    public FormaPagamento editar(FormaPagamento formaPagamento){
+        return formaPagamentoRepository.save(formaPagamento);
     }
 }

@@ -9,11 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = false)
 public abstract class EntidadeAbstrata<T, ID> {
     
-    public abstract void salvar(T entidade);
+    public abstract T salvar(T entidade);
     
     public abstract void excluir(ID id);
     
-    public abstract void editar(T entidade);
+    public abstract T editar(T entidade);
     
     public abstract List<T> listar();
     

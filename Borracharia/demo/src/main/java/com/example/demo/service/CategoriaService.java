@@ -16,7 +16,7 @@ public class  CategoriaService extends EntidadeAbstrata<Categoria, Long>{
     private ICategoriaRepository categoriaRepository;
 
     @Override
-    public void salvar(Categoria categoria) {
+    public Categoria salvar(Categoria categoria) {
         // Salvar uma categoria, verificando se o nome é válido e se não existe outra categoria com o mesmo nome
         if(StringUtils.isEmpty(categoria.getNomeCategoria())) {
             throw new IllegalArgumentException("O nome da categoria é obrigatório");
@@ -27,6 +27,7 @@ public class  CategoriaService extends EntidadeAbstrata<Categoria, Long>{
         } 
         categoriaRepository.save(categoria);
         throw new UnsupportedOperationException("Não foi possívelimplementar o metodo 'salvar'");
+        return categoriaRepository.save(categoria);
     }
 
     @Override
@@ -41,9 +42,10 @@ public class  CategoriaService extends EntidadeAbstrata<Categoria, Long>{
     }
 
     @Override
-    public void editar(Categoria categoria) {
+    public Categoria editar(Categoria categoria) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Não foi possívelimplementar o metodo 'editar'");
+        return categoriaRepository.save(categoria);
     }
 
     @Override
